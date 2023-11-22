@@ -1,0 +1,58 @@
+@import './_mixins.scss';
+$transitionTime: 400ms;
+$colorLight: rgba(248, 249, 250, 1);
+
+.background-image__square {
+  padding-bottom: 100%;
+}
+
+// .background-image__genre-name {
+//   padding-bottom: 0%;
+// }
+
+.background-image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.light-hover {
+  transition: border $transitionTime;
+
+  &:hover {
+    border-color: $colorLight;
+  }
+}
+
+.transition-color {
+  transition: color $transitionTime ease;
+}
+
+.transition-opacity {
+  transition: opacity $transitionTime ease;
+}
+
+.transition-border {
+  transition: border $transitionTime ease;
+}
+
+.transition-background-image {
+  transition: background-image $transitionTime ease;
+}
+
+// .genre-card-image {
+//   height: 230px;
+//   object-fit: cover;
+
+//   @include on575 {
+//     height: 170px;
+//   }
+
+//   @include onMedium {
+//     height: 200px;
+//   }
+
+//   @include onXl {
+//     height: 200px;
+//   }
+// }

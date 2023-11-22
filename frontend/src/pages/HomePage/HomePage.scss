@@ -1,0 +1,11 @@
+@import '../../styles/mixins';
+
+.home-page {
+
+  &__video {
+    // position: relative;
+    width: 100%;
+    height: calc(100vh - 40px - 16px);
+    min-height: 200px;
+  }
+}

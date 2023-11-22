@@ -1,0 +1,35 @@
+@mixin on575 {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin onSmall {
+  @media (min-width: 576px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin onMedium {
+  @media (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin onLarge {
+  @media (min-width: 992px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin onXl {
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    @content;
+  }
+}
+
+@mixin onXxl {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
