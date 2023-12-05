@@ -109,7 +109,7 @@ function AudioPlayer() {
           <Button
             id="button-play"
             variant="primary"
-            className="p-3 background-image transition-background-image"
+            className="p-3 bg-image transition-bg-image"
             style={{ backgroundImage: isPlaying ? `url(${iconPause})` : `url(${iconPlay})` }}
             onClick={handlerClickPlay}
           />

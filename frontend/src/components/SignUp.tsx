@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { getDateVerification } from '../helpers/getDateVerification';
@@ -134,11 +135,7 @@ export const SignUp: React.FC = () => {
           onClick={handlerSubmit}
         >
           {status === Status.Loading
-            ? <span
-              className="spinner-border spinner-border-md"
-              role="status"
-              aria-hidden="true"
-            />
+            ? <Spinner animation="border" />
             : 'Register'
           }
         </Button>

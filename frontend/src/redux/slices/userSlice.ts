@@ -5,6 +5,18 @@ import { User, loginUser, registerUser } from '../../types/User';
 import { Status } from '../../types/Status';
 import { SignUrls, signBy } from '../../api/loginApi';
 
+const testUser = {
+  id: 1,
+  name: 'Valera',
+  email: 'valera1997@email.com',
+  is_stuff: false,
+  password: 'valerathebest97',
+
+  genres: [], // genreId string GenreShort
+  bands: [], // BandShort
+  tickets: [],
+};
+
 export interface UserState {
   user: User | null;
   // error: string | null,
@@ -12,7 +24,7 @@ export interface UserState {
 }
 
 const initialState: UserState = {
-  user: null,
+  user: testUser,
   // error: null,
   status: Status.Inaction,
 };

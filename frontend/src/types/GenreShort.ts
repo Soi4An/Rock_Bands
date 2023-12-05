@@ -1,9 +1,9 @@
 export interface GenreShort {
   id: number, // ?
   genreId: string, // /genre/classic-rock
-  img: string,
   name: string,
+  img: string,
   year: number,
-  bands: number,
+  quantityBands: number,
   heavines: string, //6/10
 };

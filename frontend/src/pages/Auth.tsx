@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import { Header } from "../../components/Header";
-import { SignIn } from "../../components/SignIn";
-import { SignUp } from '../../components/SignUp';
-import { useAppSelector } from '../../redux/hooks';
+import { Header } from "../components/Header";
+import { SignIn } from "../components/SignIn";
+import { SignUp } from '../components/SignUp';
+import { useAppSelector } from '../redux/hooks';
 
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
-import { Status } from '../../types/Status';
+import { Status } from '../types/Status';
 
 export const Auth: React.FC = () => {
   const { status } = useAppSelector(state => state.user);

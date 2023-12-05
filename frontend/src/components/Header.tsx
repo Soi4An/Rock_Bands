@@ -1,12 +1,15 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Image from 'react-bootstrap/Image';
+
 import { Link, useLocation } from 'react-router-dom';
 import { HeaderLinks } from '../types/HeaderLinks';
 import { useAppSelector } from '../redux/hooks';
+import iconPerson from '../images/icon-person.svg';
 
 const DEF_GENRES_LINK = `${HeaderLinks.Genres}?page=1&sort=name`;
-const DEF_BANDS_LINK = `${HeaderLinks.Bands}?page=1&sort=name`;
+const DEF_BANDS_LINK = `${HeaderLinks.Bands}?page=1&sort=name&genre=pop`;
 // const DEF_TICKETS_LINK = `${HeaderLinks.Tickets}?page=1&sort=date`;
 
 export const Header = () => {
@@ -16,8 +19,8 @@ export const Header = () => {
   return (
     <Navbar expand="md" className="fs-3">
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          React-Bootstrap
+        <Navbar.Brand as={Link} to="/" className="text-warning">
+          Music-Magazine
         </Navbar.Brand>
 
         <Navbar.Toggle
@@ -52,7 +55,8 @@ export const Header = () => {
             </Nav.Link>
           </Nav>
 
-          {user && <Nav>
+          {/* {user && ( */}
+          <Nav>
             <Nav.Link
               as={Link}
               to={HeaderLinks.MyPage}
@@ -60,7 +64,8 @@ export const Header = () => {
             >
               My page
             </Nav.Link>
-          </Nav>}
+          </Nav>
+          {/* )} */}
         </Navbar.Collapse>
 
       </Container>

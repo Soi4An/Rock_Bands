@@ -1,26 +1,34 @@
 import { useState } from 'react';
 import { useLocation, useSearchParams } from "react-router-dom";
-import { getGenres } from '../api/genreApi';
-import { GenreShort } from '../types/GenreShort';
 import { SearchLink } from '../helpers/SearchLink';
-import { SortParaps } from '../types/SortParams';
+import { SortParams  } from '../types/SortParams';
 
 import classNames from 'classnames';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 import iconArrowReset from '../images/icon-arrow-restart.svg';
-const DEF_SORT = SortParaps.NameKey;
+import { GenersRequest } from '../types/GenersRequest';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { BandShort } from '../types/BandShort';
+import { setBands } from '../redux/slices/bandsSlice';
+import { getBands } from '../api/bandsApi';
+import { MainGenres } from '../types/MainGenres';
+import { BandsRequest } from '../types/BandsRequest';
+
+const DEF_SORT = SortParams .NameKey;
 const DEF_QUERY = '';
+const DEF_GENRE = MainGenres.PopKey;
 
 type Props = {
-  values: GenreShort[],
-  setValues: (newGenres: GenreShort[]) => void,
 };
 
-export const ShowMore: React.FC<Props> = ({
-  values: genres, setValues,
+export const BandsShowMore: React.FC<Props> = ({
+
 }) => {
+  const { bands } = useAppSelector(state => state.bands);
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const page = searchParams.get('page') || '1';
@@ -33,9 +41,17 @@ export const ShowMore: React.FC<Props> = ({
   const handlerShowMore = () => {
     setIsLoading(true);
 
-    getGenres(newPage, DEF_SORT, DEF_QUERY)
+    const newRequest: BandsRequest = {
+      page: newPage,
+      sort: DEF_SORT,
+      query: DEF_QUERY,
+      genre: DEF_GENRE,
+    };
+
+    getBands(newRequest)
       .then(resp => {
-        setValues([...genres, ...resp]);
+        dispatch(setBands(!bands ? [...resp] : [...bands, ...resp]))
+        // setValues([...genres, ...resp]);
         setIsErr(false);
       })
       .catch(() => setIsErr(true))
@@ -48,11 +64,7 @@ export const ShowMore: React.FC<Props> = ({
         variant={isErr ? 'danger' : 'success'}
         className="w-100"
       >
-        <span
-          className="spinner-border spinner-border-sm"
-          role="status"
-          aria-hidden="true"
-        />
+        <Spinner animation="border" size="sm" />
       </Button >
       : <SearchLink
         params={{ page: newPage.toString() }}

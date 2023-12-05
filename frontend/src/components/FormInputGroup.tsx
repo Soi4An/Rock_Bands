@@ -15,18 +15,19 @@ type Props = {
   value: string,
   setValue: (newValue: string) => void,
   error?: string | null,
-  setError?: (newErrors: string | null) => void
+  setError?: (newErrors: string | null) => void,
+  withIcons?: boolean,
 };
 
 export const FormInputGroup: React.FC<Props> = ({
-  name, value, setValue, error = null, setError = () => { },
+  name, value, setValue, error = null, setError = () => { }, withIcons = true,
 }) => {
   const input = getInputByName(name);
 
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
 
   return (
-    <Form.Group className="mb-2">
+    <Form.Group className="mb-2 flex-grow-1 w-100">
       <Form.Label
         className={classNames('mb-2', 'transition-color', { 'text-danger': !!error })}
         htmlFor={input?.id}
@@ -35,13 +36,16 @@ export const FormInputGroup: React.FC<Props> = ({
       </Form.Label>
 
       <InputGroup>
-        <InputGroup.Text
-          className={classNames(
-            'transition-border', { 'border-danger': !!error }
-          )}
-        >
-          <img src={input?.imgLink} alt={name} />
-        </InputGroup.Text>
+        {withIcons && (
+          <InputGroup.Text
+            className={classNames(
+              'transition-border',
+              { 'border-danger': !!error },
+            )}
+          >
+            <img src={input?.imgLink} alt={name} />
+          </InputGroup.Text>
+        )}
 
         <Form.Control
           id={input?.id}
@@ -52,7 +56,8 @@ export const FormInputGroup: React.FC<Props> = ({
           onChange={e => setValue(e.target.value)}
           onFocus={() => setError(null)}
           className={classNames(
-            'transition-border', { 'border-danger': !!error }
+            'transition-border',
+            { 'border-danger': !!error },
           )}
           type={isShowPassword ? 'text' : input?.type}
         />
@@ -75,6 +80,6 @@ export const FormInputGroup: React.FC<Props> = ({
           </Button>
         )}
       </InputGroup>
-    </Form.Group>
+    </Form.Group >
   );
 };

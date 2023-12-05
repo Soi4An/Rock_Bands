@@ -19,7 +19,9 @@ const handlerChangeUser: ChangeUser = (
   const oldUser = { ...currentUser };
   const newUser = { ...oldUser};
 
-  newUser[typeParam] = newParamsIds;
+  // newUser[typeParam] = newParamsIds;
+
+
 
   // dispatch(setUser(newUser));
   // setExtraState(!extraState);

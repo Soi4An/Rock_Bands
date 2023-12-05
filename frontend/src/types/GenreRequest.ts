@@ -1,7 +1,7 @@
-import { SortParaps } from "./SortParams";
+import { SortParams  } from "./SortParams";
 
 export type GenreRequest = {
   page: number;
-  sort: SortParaps;
+  sort: SortParams ;
   query: string;
 };

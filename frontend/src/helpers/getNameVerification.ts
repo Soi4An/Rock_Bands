@@ -17,7 +17,7 @@ export default function getNameVerification(name: string): Message | null {
     return { element: InputsNames.Name, messages: newMess };
   }
 
-  if (!/^[A-Za-z]$/.test(name)) {
+  if (!/^[A-Za-z]+$/.test(name)) {
     const newMess = `Name must contain only Latin letters.`;
 
     return { element: InputsNames.Name, messages: newMess };

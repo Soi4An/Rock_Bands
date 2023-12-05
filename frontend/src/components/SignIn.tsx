@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { getLoginUserAsyncBy } from '../redux/slices/userSlice';
@@ -14,7 +15,7 @@ import { DateVerification, getDateVerification } from '../helpers/getDateVerific
 
 export const SignIn: React.FC = () => {
   const { state } = useLocation();
-  console.log("🚀 ~ file: SignIn.tsx:17 ~ state:", state)
+  // console.log("🚀 ~ file: SignIn.tsx:17 ~ state:", state)
   const { user, status } = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
 
@@ -117,11 +118,7 @@ export const SignIn: React.FC = () => {
           onClick={handlerSubmit}
         >
           {status === Status.Loading
-            ? <span
-              className="spinner-border spinner-border-md"
-              role="status"
-              aria-hidden="true"
-            />
+            ? <Spinner animation="border" />
             : 'Sign In'
           }
         </Button>

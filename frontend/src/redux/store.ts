@@ -1,9 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import userSlice from './slices/userSlice';
+import genresSlice from './slices/genresSlice';
+import bandsSlice from './slices/bandsSlice';
 
 export const store = configureStore({
   reducer: {
     user: userSlice,
+    genres: genresSlice,
+    bands: bandsSlice,
   },
 });
 

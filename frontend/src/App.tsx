@@ -2,12 +2,13 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import { HomePage } from './pages/HomePage/HomePage';
-import { Missing } from './pages/Missing/Missing';
-import { BandsPage } from './pages/BandsPage/BandsPage';
-import { Auth } from './pages/Auth/Auth';
-import { GenresPage } from './pages/GenresPage/GenresPage';
-import { RequireAuth } from './components/RequireAuth';
-import { GenreDetails } from './pages/GenreDetails/GenreDetails';
+import { Missing } from './pages/Missing';
+import { BandsPage } from './pages/BandsPage';
+import { Auth } from './pages/Auth';
+import { GenresPage } from './pages/GenresPage';
+import { GenreDetails } from './pages/GenreDetails';
+import BandDetails from './pages/BandDetails';
+import MyPage from './pages/MyPage';
 
 function App() {
   return (
@@ -30,6 +31,22 @@ function App() {
                 path=":genreId"
                 element={<GenreDetails />}
               />
+            </Route>
+
+            <Route path="bands">
+              <Route index element={<BandsPage />} />
+              <Route
+                path=":bandId"
+                element={<BandDetails />}
+              />
+            </Route>
+
+            <Route path="me">
+              <Route index element={<MyPage />} />
+              {/* <Route
+                path=":tab"
+                element={<BandDetails />}
+              /> */}
             </Route>
           {/* </Route> */}
 

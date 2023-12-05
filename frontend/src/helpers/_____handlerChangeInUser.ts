@@ -14,11 +14,11 @@ const handlerChangeInUser: ChangeInUser = (
   isAddition, currentUser, typeParam, paramId, extraState, setExtraState,
 ) => {
   if (currentUser) {
-    const newGenres = isAddition
-      ? [...currentUser[typeParam], paramId]
-      : currentUser[typeParam].filter(id => id !== paramId);
+    // const newGenres = isAddition
+    //   ? [...currentUser[typeParam], paramId]
+    //   : currentUser[typeParam].filter(id => id !== paramId);
 
-    handlerChangeUser(currentUser, typeParam, newGenres, extraState, setExtraState);;
+    // handlerChangeUser(currentUser, typeParam, newGenres, extraState, setExtraState);;
   }
 };
 

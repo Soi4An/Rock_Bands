@@ -1,43 +1,64 @@
 @import './_mixins.scss';
 $transitionTime: 400ms;
 $colorLight: rgba(248, 249, 250, 1);
+$colorInfo: rgba(13, 202, 240, 1);
+$colorPrimary: rgba(13,110,253, 1);
 
-.background-image__square {
-  padding-bottom: 100%;
-}
-
-// .background-image__genre-name {
-//   padding-bottom: 0%;
-// }
-
-.background-image {
+.bg-image {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
 
-.light-hover {
-  transition: border $transitionTime;
-
-  &:hover {
-    border-color: $colorLight;
+  &__square {
+    padding-bottom: 100%;
   }
 }
 
-.transition-color {
-  transition: color $transitionTime ease;
+.hover {
+  &-border-light:hover {
+    border-color: $colorLight;
+  }
+
+  &-bg-primary:hover {
+    background-color: $colorPrimary;
+  }
 }
 
-.transition-opacity {
-  transition: opacity $transitionTime ease;
+.transition {
+  &-color {
+    transition: color $transitionTime ease;
+  }
+
+  &-opacity {
+    transition: opacity $transitionTime ease;
+  }
+
+  &-border {
+    transition: border $transitionTime ease;
+  }
+
+  &-bg-image {
+    transition: background-image $transitionTime ease;
+  }
+
+  &-bg-color {
+    transition: background-color $transitionTime ease;
+  }
 }
 
-.transition-border {
-  transition: border $transitionTime ease;
+.text-justify {
+  text-align: justify;
 }
 
-.transition-background-image {
-  transition: background-image $transitionTime ease;
+.pointer {
+  cursor: pointer;
+}
+
+.image-band-member {
+  max-height: 400px;
+  object-fit: cover;
+
+  // float: left;
 }
 
 // .genre-card-image {

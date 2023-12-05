@@ -1,4 +1,4 @@
-export enum SortParaps {
+export enum SortParams {
   NameName = 'Alphabetically',
   NameKey = 'name',
   AgeName = 'Newest',

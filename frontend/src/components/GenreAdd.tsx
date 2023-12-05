@@ -8,22 +8,25 @@ import handlerChangeInUser from '../helpers/_____handlerChangeInUser';
 import { setUser } from '../redux/slices/userSlice';
 import { patchUser } from '../api/_____userApi';
 import { User } from '../types/User';
+import { GenreShort } from '../types/GenreShort';
 
 // const DEF_BUTTON_CLASSES = 'w-100 align-items-center justify-content-center';
 
-function ReadLater() {
+type Props = {
+  genre: GenreShort,
+};
+
+function GenreAdd({ genre }: Props) {
   const { genreId } = useParams();
   const { user } = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
 
-  const startAdded = !!user?.genres.find(id => id === genreId) || false;
+  const startAdded = user?.genres.some(genre => genre.genreId === genreId) || false;
   const [isAdded, setIsAdded] = useState<boolean>(startAdded);
 
-  const hanadlerChangeGenreInUser = (currentUser: User, newGenres: string[]) => {
+  const hanadlerChangeGenreInUser = (currentUser: User, newGenres: GenreShort[]) => {
     const oldUser = { ...currentUser };
-    const newUser = { ...oldUser };
-
-    newUser.genres = newGenres;
+    const newUser = { ...oldUser, genres: newGenres };
 
     dispatch(setUser(newUser));
     setIsAdded(c => !c);
@@ -38,16 +41,16 @@ function ReadLater() {
 
   const handlerDeleteGenre = () => {
     if (!!genreId && !!user) {
-      const newGenres = user.genres.filter(id => id !== genreId);
-
+      const newGenres = user.genres.filter(genre => genre.genreId !== genreId);
+      // console.log('delete');
       hanadlerChangeGenreInUser(user, newGenres);
     }
   };
 
   const handlerAddGenre = () => {
     if (!!genreId && !!user) {
-      const newGenres = [...user.genres, genreId];
-
+      const newGenres = [...user.genres, genre];
+      // console.log('add');
       hanadlerChangeGenreInUser(user, newGenres);
     }
   };
@@ -99,4 +102,4 @@ function ReadLater() {
   );
 }
 
-export default ReadLater;
+export default GenreAdd;

@@ -1,15 +1,16 @@
+import { BandShort } from "./BandShort";
 import { GenreShort } from "./GenreShort";
 
 export interface User {
-  id: number;
-  name: string;
-  email: string;
+  id: number,
+  name: string,
+  email: string,
   is_stuff: boolean,
   password: string,
 
-  genres: string[], // genreId
-  bands: string[];
-  tickets: string[];
+  genres: GenreShort[], // genreId string GenreShort
+  bands: BandShort[], // BandShort
+  tickets: string[],
 }
 
 export type registerUser = {
